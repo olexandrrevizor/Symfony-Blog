@@ -1,0 +1,17 @@
+{% extends 'TaskBlogBundle::base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        {% for post in posts %}
+            <div class="col-sm-6 col-md-3">
+                <div class="thumbnail">
+                    <img src="{{ asset('uploads/' ~ post.slug ~ '/thumb.png') }}" alt="...">
+                    <div class="caption">
+                        <a href="{{ 'http://' ~ app.request.host ~ '/post/' ~ post.id }}"><h3>{{ post.title }}</h3></a>
+                        <p>{{ post.excerpt }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

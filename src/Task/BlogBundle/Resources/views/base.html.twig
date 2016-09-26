@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html"; charset=utf-8" />
+    <title>{% block title %}Symblog{% endblock %} - Symblog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    {% block stylesheets %}
+        <link href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}" type="text/css" rel="stylesheet" />
+        <link href="{{ asset('assets/css/style.css') }}" type="text/css" rel="stylesheet" />
+    {% endblock %}
+</head>
+<body>
+<div class="container">
+<section id="wrapper">
+    <header id="header">
+        <div class="top">
+            {% block navigation %}
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="{{ 'http://' ~ app.request.host }}">Brand</a>
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a href="{{ 'http://' ~ app.request.host ~ '/admin/login'}}">Login</a></li>
+                            </ul>
+                        </div><!-- /.navbar-collapse -->
+                    </div><!-- /.container-fluid -->
+                </nav>
+            {% endblock %}
+        </div>
+    </header>
+
+    <section class="main-col">
+        {% block body %}{% endblock %}
+    </section>
+
+    <footer id="footer">
+        <div class="navbar navbar-default">
+            {% block footer %}
+                <p class="text-center vcenter">Footer</p>
+            {% endblock %}
+        </div>
+    </footer>
+</section>
+</div>
+{% block javascripts %}{% endblock %}
+</body>
+</html>
