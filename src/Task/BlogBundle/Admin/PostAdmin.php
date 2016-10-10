@@ -23,6 +23,7 @@ class PostAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper->add('title');
+
     }
 
     protected function configureListFields(ListMapper $listMapper)
@@ -31,5 +32,24 @@ class PostAdmin extends Admin
             ->add('title')
             ->add('slug')
             ->add('author');
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function prePersist($object)
+    {
+
+        $user = $this->getConfigurationPool()->getContainer()->get('security.token_storage')->getToken()->getUser();
+        $object->setUser($user);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function preUpdate($object)
+    {
+        $user = $this->getConfigurationPool()->getContainer()->get('security.token_storage')->getToken()->getUser();
+        $object->setUser($user);
     }
 }

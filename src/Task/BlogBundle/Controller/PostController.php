@@ -23,7 +23,7 @@ class PostController extends Controller
 
         return $this->render('TaskBlogBundle:Post:post.html.twig', array(
             'post' => $post,
-        ));
+        )); 
     }
 
    
